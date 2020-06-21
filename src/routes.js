@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ConnectedRouter } from 'connected-react-router';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Posts, NotFound } from './pages'
+import { Posts, NotFound, SinglePost } from './pages'
 import { Navbar, Footer } from './layouts'
 import './App.css';
 
@@ -19,6 +19,7 @@ class Routes extends Component{
               <Route exact path="/">
                 <Posts/>
               </Route>
+              <Route path="/post/:id" component={SinglePost} />
               <Route component={NotFound} />
             </Switch>
           </div>

@@ -1,43 +1,46 @@
 import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
-import { Avatar, Bookmark, CoverPhoto, Title, Like, NumberOfComment } from '../../components';
+import { Avatar, Bookmark, CoverPhoto, Title, Like, CommentForm, Comments } from '../../components';
 import photo from './img/post.png';
-import styles from './post.module.css'
+import styles from './singlePost.module.css'
 
 
-export class Posts extends Component {
+export class SinglePost extends Component {
+    
     state = {
-        id: 1,
         avater : {},
         coverPhoto: photo,
         title: 'This is first blog This is first blog ',
         excerpt: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium totam maxime hic possimus? Vitae, perspiciatis. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium totam maxime hic possimus? Vitae, perspiciatis.'
     }
+
     render() {
-        const { id, coverPhoto, title, excerpt } = this.state;
+        const { coverPhoto, title, excerpt } = this.state;
         return (
             <Fragment>
                 <div className="row">
-                    <div className={`col-sm-12 col-md-6 col-lg-6 col-xl-4 ${styles.mt_30}`}>
-                        <div className="card position-relative h-100 p-3">
-                            <div className="d-flex justify-content-between">
+                    <div className={`col-sm-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 ${styles.mt_30}`}>
+                        <div className="position-relative">
+                            <div className={`mb-4 ${styles.title}`}>
+                                <Title title={title} />
+                            </div>
+                            <div className="d-flex justify-content-between mb-2">
                                 <Avatar 
                                     name={'nazmul'}
                                 />
                                 <Bookmark />
                             </div>
-                            <Link to={`/post/${id}`}>
-                                <CoverPhoto coverPhoto={coverPhoto}/>
-                            </Link>
-                            <Link to={`/post/${id}`}> <Title title={title} /> </Link>
-                            <p className="mt-2 mb-1">{ `${excerpt.substring(0, 100)}....` }<Link to={`/post/${id}`}>Read more</Link></p>
+                            <CoverPhoto coverPhoto={coverPhoto}/>
+                            <p className="mt-2 mb-4">{ excerpt }</p>
                             <hr/>
-                            <div className={styles.cardFooter}>
+                            <div className={`mt-4 mb-4 ${styles.cardFooter}`}>
                                 <div className="d-flex align-items-center justify-content-between ">
                                     <Like />
-                                    <NumberOfComment />
                                 </div>
                             </div>
+                            <div className="card p-4">
+                                <CommentForm />
+                            </div>
+                            <Comments />
                         </div>
                     </div>
                 </div>
