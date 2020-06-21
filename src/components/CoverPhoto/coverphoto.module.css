@@ -1,0 +1,12 @@
+.coverPhoto{
+    width: 100%;
+    border-radius: 5px;
+}
+
+.coverPhoto img{
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    -ms-object-fit: cover;
+    object-fit: cover;
+}

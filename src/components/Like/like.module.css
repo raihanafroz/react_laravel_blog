@@ -1,0 +1,8 @@
+.likeWrapper p{
+    color: rgb(101, 119, 134);
+}
+.like{
+    font-size: 24px;
+    cursor: pointer;
+    color: rgb(101, 119, 134);
+}

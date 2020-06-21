@@ -1,0 +1,25 @@
+.searchForm{
+    position: relative;
+}
+
+.searchInput:focus{
+    box-shadow: none !important;
+    border-color: inherit !important;
+}
+
+.btnSearch{
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-55%);
+    appearance: none;
+    outline: none;
+    border: none;
+    background: transparent;
+    font-size: 25px;
+    color: gray;
+}
+
+.btnSearch:focus{
+    outline: none;
+}
