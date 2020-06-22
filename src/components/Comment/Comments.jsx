@@ -27,7 +27,7 @@ export class Comments extends Component {
                     <button onClick={this.replyBtnClick} className={styles.btnsubmit} style={{marginTop: 0, marginRight: "10px"}}>Reply</button>
                     <Like />
                 </div>
-                <div className={`ml-lg-5 mt-4 ${this.state.replyForm ? styles.replyForm : "" }`}>
+                <div className={`ml-lg-4 mt-4 ${this.state.replyForm ? styles.replyForm : "" }`}>
                     <CommentForm />
                 </div>
             </div>

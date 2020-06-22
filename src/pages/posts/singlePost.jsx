@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import { Avatar, Bookmark, CoverPhoto, Title, Like, CommentForm, Comments } from '../../components';
+import { Avatar, Bookmark, CoverPhoto, Title, Like, CommentForm, Comments, NumberOfComment } from '../../components';
 import photo from './img/post.png';
 import styles from './singlePost.module.css'
+import { Link } from 'react-router-dom';
 
 
 export class SinglePost extends Component {
@@ -31,10 +32,20 @@ export class SinglePost extends Component {
                             </div>
                             <CoverPhoto coverPhoto={coverPhoto}/>
                             <p className="mt-2 mb-4">{ excerpt }</p>
+
+                            {/* Tags */}
+                            <ul className={styles.tags}>
+                                <li><Link to="">Javascript</Link></li>
+                                <li><Link to="">PHP</Link></li>
+                                <li><Link to="">CSS</Link></li>
+                            </ul>
+                            {/* End tags */}
+
                             <hr/>
                             <div className={`mt-4 mb-4 ${styles.cardFooter}`}>
                                 <div className="d-flex align-items-center justify-content-between ">
                                     <Like />
+                                    <NumberOfComment />
                                 </div>
                             </div>
                             <div className="card p-4">

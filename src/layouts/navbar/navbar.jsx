@@ -33,16 +33,10 @@ export class Navbar extends Component {
                     </div>
                     <ul className={`${this.state.isToggleOn === true ? styles.mainMenu : ''} ${styles.mobileMenu} navbar-nav ml-lg-auto`}>
                         <li className={`nav-item ${styles.navItem}`}>
-                            <Link onClick={this.closeMenu} className={`${styles.navLink} nav-link`} to="/">Home</Link>
+                            <Link onClick={this.closeMenu} className={`${styles.navLink} nav-link`} to="/login">Login</Link>
                         </li>
                         <li className={`nav-item ${styles.navItem}`}>
-                            <Link onClick={this.closeMenu} className={`${styles.navLink} nav-link`} to="/about">About</Link>
-                        </li>
-                        <li className={`nav-item ${styles.navItem}`}>
-                            <Link onClick={this.closeMenu} className={`${styles.navLink} nav-link`} to="/blog">Blog</Link>
-                        </li>
-                        <li className={`nav-item ${styles.navItem}`}>
-                            <Link onClick={this.closeMenu} className={`${styles.navLink} nav-link`} to="/contact">Contact</Link>
+                            <Link onClick={this.closeMenu} className={`${styles.navLink} nav-link`} to="/register">Register</Link>
                         </li>
                     </ul>
                 </nav>

@@ -5,3 +5,27 @@
 .title h3{
     font-size: 28px;
 }
+
+.tags{
+    margin: 0;
+    padding: 0;
+}
+
+.tags > li{
+    list-style: none;
+    display: inline-block;
+}
+
+.tags > li{
+    margin-right: 15px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.tags > li > a{
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    padding: 5px 10px;
+    font-weight: 400;
+    border-radius: 2px;
+    color: #212529;
+}
