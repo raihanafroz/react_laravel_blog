@@ -23,6 +23,7 @@ export class Posts extends Component {
                             <div className="d-flex justify-content-between">
                                 <Avatar 
                                     name={'nazmul'}
+                                    published={'June 20, 2020'}
                                 />
                                 <Bookmark />
                             </div>

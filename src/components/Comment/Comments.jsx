@@ -19,6 +19,7 @@ export class Comments extends Component {
                 <div className="mb-2">
                     <Avatar
                         name={"Nazmul"}
+                        published={'June 20, 2020'}
                     />
                 </div>
                 <p className="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, maiores tenetur, rerum illo ipsa accusantium porro distinctio cupiditate officiis inventore impedit a. Voluptatum ipsam adipisci nesciunt temporibus reiciendis voluptate eos!</p>

@@ -27,6 +27,7 @@ export class SinglePost extends Component {
                             <div className="d-flex justify-content-between mb-2">
                                 <Avatar 
                                     name={'nazmul'}
+                                    published={'June 20, 2020'}
                                 />
                                 <Bookmark />
                             </div>

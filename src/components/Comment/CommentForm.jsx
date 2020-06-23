@@ -11,6 +11,7 @@ export class CommentForm extends Component {
                 <div className="mb-3">
                     <Avatar
                         name={"Nazmul"}
+                        published={'June 20, 2020'}
                     />
                 </div>
                 <Formik
