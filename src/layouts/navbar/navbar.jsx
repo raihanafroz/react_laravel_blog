@@ -1,11 +1,12 @@
 import React, {Component, Fragment } from 'react';
 import { Link } from "react-router-dom";
-import { Search } from '../../components/index';
+import { Search, Avatar } from '../../components';
 import styles from './navbar.module.css';
 
 export class Navbar extends Component {
     state={
-        isToggleOn: true
+        isToggleOn: true,
+        isDropDown: true
     }
 
     clickMenu = () =>{
@@ -16,6 +17,12 @@ export class Navbar extends Component {
 
     closeMenu = () =>{
         this.setState({ isToggleOn: true })
+    }
+
+    dropDown = () =>{
+        this.setState( state => ({
+            isDropDown: !state.isDropDown
+        }))
     }
 
     render() {
@@ -37,6 +44,19 @@ export class Navbar extends Component {
                         </li>
                         <li className={`nav-item ${styles.navItem}`}>
                             <Link onClick={this.closeMenu} className={`${styles.navLink} nav-link`} to="/register">Register</Link>
+                        </li>
+                        <li className={`${styles.navLink}`}>
+                            <button onClick={this.dropDown}>
+                                <Avatar
+                                    height="40px"
+                                    width="40px"
+                                />
+                            </button>
+                            <ul className={`${styles.dropDownHidden} ${this.state.isDropDown ? '' : styles.dropDown }`}>
+                                <li><Link to='/'>My profile</Link></li>
+                                <li><Link to='/'>Setting</Link></li>
+                                <li><Link to='/'>Logout</Link></li>
+                            </ul>
                         </li>
                     </ul>
                 </nav>
