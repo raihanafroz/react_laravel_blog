@@ -16,7 +16,7 @@ export class Navbar extends Component {
     }
 
     closeMenu = () =>{
-        this.setState({ isToggleOn: true })
+        this.setState({ isToggleOn: true, isDropDown: true })
     }
 
     dropDown = () =>{
@@ -53,9 +53,9 @@ export class Navbar extends Component {
                                 />
                             </button>
                             <ul className={`${styles.dropDownHidden} ${this.state.isDropDown ? '' : styles.dropDown }`}>
-                                <li><Link to='/'>My profile</Link></li>
-                                <li><Link to='/'>Setting</Link></li>
-                                <li><Link to='/'>Logout</Link></li>
+                                <li><Link onClick={this.closeMenu} to='/dashboard/profile'>My profile</Link></li>
+                                <li><Link onClick={this.closeMenu} to='/'>Setting</Link></li>
+                                <li><Link onClick={this.closeMenu} to='/'>Logout</Link></li>
                             </ul>
                         </li>
                     </ul>

@@ -1,0 +1,31 @@
+.camera{
+    position: absolute;
+    left: 50%;
+    top: 55px;
+}
+
+.cameraIcon{
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.fileUpload{
+    display: none;
+}
+
+.fieldGroup{
+    margin-bottom: 20px;
+}
+.field{
+    width: 100%;
+    padding: 4px 10px;
+}
+
+.btnsubmit{
+    font-size: 16px;
+    border: 1px solid rgb(101, 119, 134);
+    padding: 4px 20px;
+    border-radius: 2px;
+    color: #212529;
+    font-weight: 500;
+}

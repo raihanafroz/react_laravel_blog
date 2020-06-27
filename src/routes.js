@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { ConnectedRouter } from 'connected-react-router';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Posts, NotFound, SinglePost, Login, Register } from './pages'
+import { Posts, NotFound, SinglePost, Login, Register, Profile, EditUserProfile } from './pages'
 import { Navbar, Footer } from './layouts'
 import './App.css';
 
 class Routes extends Component{
+  
   render(){
 
     const { history } = this.props;
@@ -26,6 +27,14 @@ class Routes extends Component{
                 <Register/>
               </Route>
               <Route path="/post/:id" component={SinglePost} />
+              {/*user dashboard routes */}
+              <Route path="/dashboard/profile/edit">
+                <EditUserProfile/>
+              </Route>
+              <Route path="/dashboard/profile">
+                <Profile/>
+              </Route>
+
               <Route component={NotFound} />
             </Switch>
           </div>

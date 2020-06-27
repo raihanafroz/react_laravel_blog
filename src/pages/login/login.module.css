@@ -6,6 +6,28 @@
     padding: 4px 10px;
 }
 
+.btnWrapper{
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btnWrapper p{
+    margin-bottom: 0;
+}
+
+@media only screen and (max-width: 600px) {
+    .btnWrapper{
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .btnWrapper p{
+        margin-bottom: 20px;
+    }
+    
+}
+
 .btnsubmit{
     font-size: 16px;
     border: 1px solid rgb(101, 119, 134);
@@ -18,3 +40,4 @@
 .replyForm{
     display: none;
 }
+

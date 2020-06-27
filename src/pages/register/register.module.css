@@ -15,6 +15,29 @@
     font-weight: 500;
 }
 
+
+.btnWrapper{
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btnWrapper p{
+    margin-bottom: 0;
+}
+
+@media only screen and (max-width: 600px) {
+    .btnWrapper{
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .btnWrapper p{
+        margin-bottom: 20px;
+    }
+    
+}
+
 .replyForm{
     display: none;
 }

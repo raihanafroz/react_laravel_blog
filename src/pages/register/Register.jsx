@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from "yup";
-import styles from './register.module.css'
+import { Link } from 'react-router-dom';
+import styles from './register.module.css';
 
 export class Register extends Component {
     render() {
@@ -52,7 +53,10 @@ export class Register extends Component {
                                             <Field type="password" name="passwordConfirm" className={styles.field} placeholder="Confirm Password"/>
                                             {errors.passwordConfirm && touched.passwordConfirm ? ( <div className="text-danger">{errors.passwordConfirm}</div> ) : null}
                                         </div>
-                                        <button type="submit" className={styles.btnsubmit}>Register</button>
+                                        <div className={`d-flex ${styles.btnWrapper}`}>
+                                            <p>Have an account? <Link to='/login'>Login</Link></p>
+                                            <button type="submit" className={styles.btnsubmit}>Register</button>
+                                        </div>
                                     </Form>
                                 </div>
                             )
