@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { ConnectedRouter } from 'connected-react-router';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Posts, NotFound, SinglePost, Login, Register, Profile, EditUserProfile } from './pages'
+import { Posts, NotFound, SinglePost, Login, Profile, EditUserProfile } from './pages';
+import Register from './pages/register/Register'
 import { Navbar, Footer } from './layouts'
 import './App.css';
 

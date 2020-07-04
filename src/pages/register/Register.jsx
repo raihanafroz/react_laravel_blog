@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from "yup";
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import styles from './register.module.css';
 
-export class Register extends Component {
+class Register extends Component {
 
 
     render() {
@@ -13,20 +14,23 @@ export class Register extends Component {
                 <div className="col-12 col-md-10 offset-md-1 col-lg-6 offset-md-3">
                     <Formik
                         initialValues={{
+                            name: '',
                             email: '',
                             password: '',
-                            passwordConfirm: '',
+                            confirm_password: '',
                             gender: '',
                         }}
                         validationSchema={
                             Yup.object().shape({
+                                name: Yup.string()
+                                    .required('Name is required'),
                                 email: Yup.string()
                                     .email('Invalid email')
                                     .required('Email is required'),
                                 password: Yup.string()
                                     .min(6, 'Password should be minimum 6 characters')
                                     .required('Password is required'),
-                                passwordConfirm: Yup.string()
+                                confirm_password: Yup.string()
                                 .required('Password is required')
                                 .min(6, 'Password should be minimum 6 characters')
                                 .oneOf(
@@ -36,15 +40,22 @@ export class Register extends Component {
                                 gender: Yup.string().required('Gender is required')
                             })
                         }
-                        onSubmit={values => {
-                            console.log(values);
+                        onSubmit={ values => {
+                            this.props.dispatch({
+                                type: 'user/REGISTER',
+                                payload: values
+                            })
                         }}
                     >
                         {
-                            ({ errors, touched, values, dirty, isSubmitting, handleChange, setFieldValue }) =>(
+                            ({ errors, touched, values, dirty, isSubmitting, handleChange }) =>(
                                 <div className="card p-4 mt-5">
                                     <h4 className="mb-4 text-center">Register</h4>
                                     <Form>
+                                        <div className={styles.fieldGroup}>
+                                            <Field type="text" name="name" className={styles.field} placeholder="Name"/>
+                                            {errors.name && touched.name ? ( <div className="text-danger">{errors.name}</div> ) : null}
+                                        </div>
                                         <div className={styles.fieldGroup}>
                                             <Field type="text" name="email" className={styles.field} placeholder="Email"/>
                                             {errors.email && touched.email ? ( <div className="text-danger">{errors.email}</div> ) : null}
@@ -54,8 +65,8 @@ export class Register extends Component {
                                             {errors.password && touched.password ? ( <div className="text-danger">{errors.password}</div> ) : null}
                                         </div>
                                         <div className={styles.fieldGroup}>
-                                            <Field type="password" name="passwordConfirm" className={styles.field} placeholder="Confirm Password"/>
-                                            {errors.passwordConfirm && touched.passwordConfirm ? ( <div className="text-danger">{errors.passwordConfirm}</div> ) : null}
+                                            <Field type="password" name="confirm_password" className={styles.field} placeholder="Confirm Password"/>
+                                            {errors.confirm_password && touched.confirm_password ? ( <div className="text-danger">{errors.confirm_password}</div> ) : null}
                                         </div>
                                         <div className={styles.fieldGroup}>
                                             <div>
@@ -82,3 +93,5 @@ export class Register extends Component {
         )
     }
 }
+
+export default connect()(Register);
