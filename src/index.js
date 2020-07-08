@@ -9,6 +9,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import reducers from './redux/reducers';
 import sagas from './redux/sagas';
 import 'bootstrap/dist/css/bootstrap.css';
+import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
 import Routes from './routes';
 import * as serviceWorker from './serviceWorker';

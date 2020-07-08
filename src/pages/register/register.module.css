@@ -41,3 +41,10 @@
 .replyForm{
     display: none;
 }
+
+.isInvalid{
+    border-color: #dc3545;
+    width: 100%;
+    padding: 4px 10px;
+    border-radius: 3px;
+}

@@ -3,6 +3,7 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from "yup";
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { ToastContainer } from "react-toastify";
 import styles from './register.module.css';
 
 class Register extends Component {
@@ -11,6 +12,7 @@ class Register extends Component {
     render() {
          return (
             <div className="row">
+                <ToastContainer autoClose={3000} />
                 <div className="col-12 col-md-10 offset-md-1 col-lg-6 offset-md-3">
                     <Formik
                         initialValues={{
@@ -53,19 +55,24 @@ class Register extends Component {
                                     <h4 className="mb-4 text-center">Register</h4>
                                     <Form>
                                         <div className={styles.fieldGroup}>
-                                            <Field type="text" name="name" className={styles.field} placeholder="Name"/>
+                                            <Field 
+                                                type="text"
+                                                name="name"
+                                                className={`${errors.name && touched.name ? styles.isInvalid : ""} ${styles.field}`}
+                                                placeholder="Name"
+                                            />
                                             {errors.name && touched.name ? ( <div className="text-danger">{errors.name}</div> ) : null}
                                         </div>
                                         <div className={styles.fieldGroup}>
-                                            <Field type="text" name="email" className={styles.field} placeholder="Email"/>
+                                            <Field type="text" name="email" className={`${errors.email && touched.email ? styles.isInvalid : ""} ${styles.field}`} placeholder="Email"/>
                                             {errors.email && touched.email ? ( <div className="text-danger">{errors.email}</div> ) : null}
                                         </div>
                                         <div className={styles.fieldGroup}>
-                                            <Field type="password" name="password" className={styles.field} placeholder="Password"/>
+                                            <Field type="password" name="password" className={`${errors.password && touched.password ? styles.isInvalid : ""} ${styles.field}`} placeholder="Password"/>
                                             {errors.password && touched.password ? ( <div className="text-danger">{errors.password}</div> ) : null}
                                         </div>
                                         <div className={styles.fieldGroup}>
-                                            <Field type="password" name="confirm_password" className={styles.field} placeholder="Confirm Password"/>
+                                            <Field type="password" name="confirm_password" className={`${errors.confirm_password && touched.confirm_password ? styles.isInvalid : ""} ${styles.field}`} placeholder="Confirm Password"/>
                                             {errors.confirm_password && touched.confirm_password ? ( <div className="text-danger">{errors.confirm_password}</div> ) : null}
                                         </div>
                                         <div className={styles.fieldGroup}>
