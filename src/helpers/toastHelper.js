@@ -1,6 +1,6 @@
 import { toast } from 'react-toastify';
-export const toastError = ( errorsResponse ) =>{
-    const { status, message, errors } = errorsResponse;
+export const toastError = ( errorsMessages ) =>{
+    const { status, message, errors } = errorsMessages;
     if(status === "success"){
         return toast.info(message);
     } else if(status === "validation error"){

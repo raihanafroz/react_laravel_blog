@@ -5,15 +5,34 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { ToastContainer } from "react-toastify";
 import styles from './register.module.css';
+import { css } from "@emotion/core";
+import PulseLoader from "react-spinners/PulseLoader";
+
+const override = css`
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  margin: 0 auto;
+  border-color: #D0021B;
+  div{
+      background-color: #D0021B;
+  }
+`;
 
 class Register extends Component {
-
-
     render() {
+        // console.log()
          return (
             <div className="row">
                 <ToastContainer autoClose={3000} />
                 <div className="col-12 col-md-10 offset-md-1 col-lg-6 offset-md-3">
+                    <PulseLoader
+                        css={override}
+                        size={10}
+                        color={"#123abc"}
+                        loading={this.props.loading}
+                    />
                     <Formik
                         initialValues={{
                             name: '',
@@ -42,11 +61,12 @@ class Register extends Component {
                                 gender: Yup.string().required('Gender is required')
                             })
                         }
-                        onSubmit={ values => {
+                        onSubmit={ (values,  { resetForm }) => {
                             this.props.dispatch({
                                 type: 'user/REGISTER',
                                 payload: values
                             })
+                            resetForm()
                         }}
                     >
                         {
@@ -101,4 +121,8 @@ class Register extends Component {
     }
 }
 
-export default connect()(Register);
+const mapStateToProps = (state) =>{
+    return state.auth
+}
+
+export default connect(mapStateToProps)(Register);
