@@ -20,7 +20,7 @@ export function* LOGIN({ payload }){
         yield put({
             type: "user/SET_STATE",
             payload: {
-                id, name, email, phone, gender, image, about, type, status
+                id, name, email, phone, gender, image, about, type, status, isLoggedIn: true
             }
         })
         yield put(push('/'))

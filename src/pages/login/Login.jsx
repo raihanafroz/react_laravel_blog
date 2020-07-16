@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { ToastContainer } from "react-toastify";
 import { Link } from 'react-router-dom';
 import { css } from "@emotion/core";
+import { Redirect } from 'react-router-dom'
 import PulseLoader from "react-spinners/PulseLoader";
 import styles from './login.module.css';
 
@@ -23,6 +24,10 @@ const override = css`
 
 class Login extends Component {
     render() {
+        const { isLoggedIn, loading } = this.props
+        if(isLoggedIn){
+            return <Redirect to="/" />
+        } else{
         return (
             <div className="row">
                 <ToastContainer autoClose={3000} />
@@ -53,16 +58,18 @@ class Login extends Component {
                                 type: 'user/LOGIN',
                                 payload: values
                             })
-                            resetForm()
+                            if(loading){
+                                resetForm()
+                            }
                         }}
                     >
                         {
-                            ({ errors, touched }) =>(
+                            ({ errors, touched, values, isSubmitting }) =>(
                                 <div className="card p-4 mt-5">
                                     <h4 className="mb-4 text-center">Login</h4>
                                     <Form>
                                         <div className={styles.fieldGroup}>
-                                            <Field type="text" name="email" className={styles.field} placeholder="Email"/>
+                                            <Field type="text" name="email" className={styles.field} value={values.email} placeholder="Email"/>
                                             {errors.email && touched.email ? ( <div className="text-danger">{errors.email}</div> ) : null}
                                         </div>
                                         <div className={styles.fieldGroup}>
@@ -72,7 +79,7 @@ class Login extends Component {
                                         <Link to="/forgot" style={{marginBottom: "10px", display: "block"}}>Forgot password?</Link>
                                         <div className={`d-flex ${styles.btnWrapper}`}>
                                             <p>Create account <Link to="/register">Register</Link></p>
-                                            <button type="submit" className={styles.btnsubmit}>Login</button>
+                                            <button type="submit" className={styles.btnsubmit} disabled={isSubmitting}>Login</button>
                                         </div>
                                     </Form>
                                 </div>
@@ -81,7 +88,7 @@ class Login extends Component {
                     </Formik>
                 </div>
             </div>
-        )
+        )}
     }
 }
 

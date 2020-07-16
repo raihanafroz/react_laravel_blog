@@ -5,7 +5,8 @@ import { Posts, NotFound, SinglePost, Profile, EditUserProfile } from './pages';
 import { PrivateRoute } from './components'
 import Register from './pages/register/Register'
 import Login from './pages/login/Login'
-import { Navbar, Footer } from './layouts'
+import  { Footer }  from './layouts'
+import  Navbar from './layouts/navbar/navbar'
 import './App.css';
 
 class Routes extends Component{

@@ -1,9 +1,10 @@
 import React, {Component, Fragment } from 'react';
 import { Link } from "react-router-dom";
 import { Search, Avatar } from '../../components';
+import { connect } from 'react-redux';
 import styles from './navbar.module.css';
 
-export class Navbar extends Component {
+class Navbar extends Component {
     state={
         isToggleOn: true,
         isDropDown: true
@@ -26,6 +27,7 @@ export class Navbar extends Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <Fragment>
                 <nav className={`navbar navbar-expand-lg fixed-top ${styles.mianNavbar}`}>
@@ -38,7 +40,7 @@ export class Navbar extends Component {
                             <div></div>
                         </button>
                     </div>
-                        { !localStorage.getItem('user') ?
+                        {!this.props.isLoggedIn?
                             <ul className={`${this.state.isToggleOn === true ? styles.mainMenu : ''} ${styles.mobileMenu} navbar-nav ml-lg-auto`}>
                                 <li className={`nav-item ${styles.navItem}`}>
                                     <Link onClick={this.closeMenu} className={`${styles.navLink} nav-link`} to="/login">Login</Link>
@@ -70,3 +72,9 @@ export class Navbar extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) =>{
+    return state.auth
+}
+
+export default connect(mapStateToProps)(Navbar);

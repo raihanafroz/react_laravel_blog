@@ -5,7 +5,7 @@ if(user){
     var user_data = user.data.user_data
 }
 
-const initialState = user_data ? { user_data, loading: false } : {
+const initialState = user_data ? { user_data, loading: false, isLoggedIn: true } : {
     name: "", 
     email: "", 
     phone: "", 
@@ -15,6 +15,7 @@ const initialState = user_data ? { user_data, loading: false } : {
     type: "",
     status: "",
     loading: false,
+    isLoggedIn: false
 }
 
 const authReducer = ( state = initialState, action ) => {
