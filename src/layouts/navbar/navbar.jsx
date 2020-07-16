@@ -38,27 +38,33 @@ export class Navbar extends Component {
                             <div></div>
                         </button>
                     </div>
-                    <ul className={`${this.state.isToggleOn === true ? styles.mainMenu : ''} ${styles.mobileMenu} navbar-nav ml-lg-auto`}>
-                        <li className={`nav-item ${styles.navItem}`}>
-                            <Link onClick={this.closeMenu} className={`${styles.navLink} nav-link`} to="/login">Login</Link>
-                        </li>
-                        <li className={`nav-item ${styles.navItem}`}>
-                            <Link onClick={this.closeMenu} className={`${styles.navLink} nav-link`} to="/register">Register</Link>
-                        </li>
-                        <li className={`${styles.navLink}`}>
-                            <button onClick={this.dropDown}>
-                                <Avatar
-                                    height="40px"
-                                    width="40px"
-                                />
-                            </button>
-                            <ul className={`${styles.dropDownHidden} ${this.state.isDropDown ? '' : styles.dropDown }`}>
-                                <li><Link onClick={this.closeMenu} to='/dashboard/profile'>My profile</Link></li>
-                                <li><Link onClick={this.closeMenu} to='/'>Setting</Link></li>
-                                <li><Link onClick={this.closeMenu} to='/'>Logout</Link></li>
+                        { !localStorage.getItem('user') ?
+                            <ul className={`${this.state.isToggleOn === true ? styles.mainMenu : ''} ${styles.mobileMenu} navbar-nav ml-lg-auto`}>
+                                <li className={`nav-item ${styles.navItem}`}>
+                                    <Link onClick={this.closeMenu} className={`${styles.navLink} nav-link`} to="/login">Login</Link>
+                                </li>
+                                <li className={`nav-item ${styles.navItem}`}>
+                                    <Link onClick={this.closeMenu} className={`${styles.navLink} nav-link`} to="/register">Register</Link>
+                                </li>
                             </ul>
-                        </li>
-                    </ul>
+                        : 
+                            <ul className={`${this.state.isToggleOn === true ? styles.mainMenu : ''} ${styles.mobileMenu} navbar-nav ml-lg-auto`}>
+                                <li className={`${styles.navLink}`}>
+                                    <button onClick={this.dropDown}>
+                                        <Avatar
+                                            height="40px"
+                                            width="40px"
+                                            // name={}
+                                        />
+                                    </button>
+                                    <ul className={`${styles.dropDownHidden} ${this.state.isDropDown ? '' : styles.dropDown }`}>
+                                        <li><Link onClick={this.closeMenu} to='/dashboard/profile'>My profile</Link></li>
+                                        <li><Link onClick={this.closeMenu} to='/'>Setting</Link></li>
+                                        <li><Link onClick={this.closeMenu} to='/'>Logout</Link></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        }
                 </nav>
             </Fragment>
         )

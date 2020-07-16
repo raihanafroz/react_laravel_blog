@@ -7,5 +7,7 @@ export const toastError = ( errorsMessages ) =>{
         for(let error in errors){
             toast.error(errors[error][0])
         }
+    }  else if(status === "checking error"){
+        return toast.error(errorsMessages.error)
     }
 }

@@ -18,3 +18,24 @@ export const register = (payload) => {
     });
 
 }
+
+export const login = (payload) => {
+    return fetch(`${baseUrl}login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    })
+    .then(response => response.json())
+    .then(response => {
+        toastError(response);
+        if(response.status === "success"){
+            localStorage.setItem("user", JSON.stringify(response));
+            return response;
+        }
+    })
+    .catch(e => {
+        console.log(e)
+        toast.error("Server error, please try again later")
+    });
+
+}

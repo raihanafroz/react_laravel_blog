@@ -4,7 +4,7 @@ import avatarIcon from './avatar.png'
 
 export function Avatar({ avatar, name, published, height, width, bio }) {
     return (
-        <div className={`d-flex avatar-wrapper ${!bio ? `align-items-center` : `${styles.avatarWrapperBioMobile}`}`}>
+        <div className={`d-flex avatar-wrapper ${!bio ? `` : `${styles.avatarWrapperBioMobile}`}`}>
             <div className={styles.avatar} style={{ height: height ? height : '', width: width ? width : '' }}>
                 <img src={ !avatar ? avatarIcon : avatar } alt="Profile picter"/>
             </div>

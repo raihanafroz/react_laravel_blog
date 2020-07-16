@@ -1,7 +1,7 @@
 export * from './404/404'
 export * from './posts/posts'
 export * from './posts/singlePost'
-export * from './login/Login'
+// export * from './login/Login'
 // export * from './register/Register'
 export * from './dashboard/user/profile/Profile'
 export * from './dashboard/user/profile/Edit'

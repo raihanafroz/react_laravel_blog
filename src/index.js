@@ -6,7 +6,7 @@ import createSagaMiddleware from 'redux-saga';
 import { createBrowserHistory } from 'history';
 import { routerMiddleware } from 'connected-react-router';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import reducers from './redux/reducers';
+import rootReducer from './redux/reducers';
 import sagas from './redux/sagas';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -18,7 +18,7 @@ const history = createBrowserHistory();
 const sagaMiddleware = createSagaMiddleware();
 const routeMiddleware = routerMiddleware(history);
 const middlewares = [sagaMiddleware, routeMiddleware];
-const store = createStore(reducers(history), composeWithDevTools(compose(applyMiddleware(...middlewares))));
+const store = createStore(rootReducer(history), composeWithDevTools(compose(applyMiddleware(...middlewares))));
 sagaMiddleware.run(sagas);
 
 ReactDOM.render(
@@ -29,6 +29,8 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
+
+export default history;
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

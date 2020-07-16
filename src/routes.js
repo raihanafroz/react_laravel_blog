@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { ConnectedRouter } from 'connected-react-router';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Posts, NotFound, SinglePost, Login, Profile, EditUserProfile } from './pages';
+import { Posts, NotFound, SinglePost, Profile, EditUserProfile } from './pages';
+import { PrivateRoute } from './components'
 import Register from './pages/register/Register'
+import Login from './pages/login/Login'
 import { Navbar, Footer } from './layouts'
 import './App.css';
 
@@ -14,7 +16,7 @@ class Routes extends Component{
     
     return (
       <ConnectedRouter history={history}>
-        <Router>
+        {/* <Router> */}
           <Navbar />
           <div className="container" style={{marginTop: "80px"}}>
             <Switch>
@@ -28,19 +30,14 @@ class Routes extends Component{
                 <Register/>
               </Route>
               <Route path="/post/:id" component={SinglePost} />
-              {/*user dashboard routes */}
-              <Route path="/dashboard/profile/edit">
-                <EditUserProfile/>
-              </Route>
-              <Route path="/dashboard/profile">
-                <Profile/>
-              </Route>
-
+              {/*user dashboard private routes */}
+              <PrivateRoute path="/dashboard/profile/edit" component={EditUserProfile}/>
+              <PrivateRoute path="/dashboard/profile" component={Profile}/>
               <Route component={NotFound} />
             </Switch>
           </div>
           <Footer />
-        </Router>
+        {/* </Router> */}
       </ConnectedRouter>
     );
   }

@@ -1,14 +1,38 @@
 import React, { Component } from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from "yup";
-import styles from './login.module.css'
+import { connect } from 'react-redux';
+import { ToastContainer } from "react-toastify";
 import { Link } from 'react-router-dom';
+import { css } from "@emotion/core";
+import PulseLoader from "react-spinners/PulseLoader";
+import styles from './login.module.css';
 
-export class Login extends Component {
+const override = css`
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  margin: 0 auto;
+  border-color: #D0021B;
+  div{
+      background-color: #D0021B;
+  }
+`;
+
+
+class Login extends Component {
     render() {
         return (
             <div className="row">
+                <ToastContainer autoClose={3000} />
                 <div className="col-12 col-md-10 offset-md-1 col-lg-6 offset-lg-3">
+                    <PulseLoader
+                        css={override}
+                        size={10}
+                        color={"#123abc"}
+                        loading={this.props.loading}
+                    />
                     <Formik
                         initialValues={{
                             email: '',
@@ -24,8 +48,12 @@ export class Login extends Component {
                                     .required('Email is required')
                             })
                         }
-                        onSubmit={values => {
-                            console.log(values);
+                        onSubmit={ (values,  { resetForm }) => {
+                            this.props.dispatch({
+                                type: 'user/LOGIN',
+                                payload: values
+                            })
+                            resetForm()
                         }}
                     >
                         {
@@ -56,3 +84,9 @@ export class Login extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) =>{
+    return state.auth
+}
+
+export default connect(mapStateToProps)(Login);
